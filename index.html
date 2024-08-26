@@ -6,74 +6,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Johnnyverse - IT Services</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header and Navigation */
         header {
-            background-color: #0d47a1;
+            background: linear-gradient(to right, #0d47a1, #1976d2);
             color: white;
             padding: 20px;
             text-align: center;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
         }
 
         nav {
-            background-color: #1976d2;
+            background-color: #1565c0;
             padding: 10px 0;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
             color: white;
-            text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        /* Main Content */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
 
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .section h2 {
             color: #0d47a1;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
         }
 
         .services ul {
+            display: flex;
+            justify-content: space-between;
             list-style-type: none;
             padding: 0;
+            flex-wrap: wrap;
         }
 
         .services ul li {
             background-color: #e3f2fd;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 4px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            flex-basis: 30%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        footer {
+        .services ul li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact form input,
+        .contact form textarea {
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact form input:focus,
+        .contact form textarea:focus {
+            border-color: #1976d2;
+            outline: none;
+        }
+
+        .contact form button {
+            padding: 15px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
             background-color: #0d47a1;
             color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact form button:hover {
+            background-color: #1976d2;
+        }
+
+        .contact-info {
             text-align: center;
-            padding: 10px 0;
+            margin-top: 30px;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -106,14 +208,24 @@
 
         <section id="about" class="section about">
             <h2>About Johnnyverse</h2>
-            <p>Johnnyverse is a leading IT service provider based in Florida, USA. We specialize in offering top-notch services to help businesses thrive in the digital age. Our expertise ranges from brand consultation and graphic design to comprehensive IT infrastructure management and cybersecurity solutions.</p>
+            <p>Johnnyverse is a leading IT service provider based in Florida, USA. We specialize in offering top-notch
+                services to help businesses thrive in the digital age. Our expertise ranges from brand consultation and
+                graphic design to comprehensive IT infrastructure management and cybersecurity solutions.</p>
         </section>
 
         <section id="contact" class="section contact">
             <h2>Contact Us</h2>
-            <p>Address: 1234 Tech Street, Orlando, FL 32801, USA</p>
-            <p>Phone: +1 (555) 123-4567</p>
-            <p>Email: contact@johnnyverse.com</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p>Address: 1234 Tech Street, Orlando, FL 32801, USA</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Email: contact@johnnyverse.com</p>
+            </div>
         </section>
     </div>
 
