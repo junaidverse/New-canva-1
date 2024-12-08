@@ -6,78 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Johnnyverse - IT Services</title>
     <style>
-
-/* Popup Styles */
-.popup-overlay {
-  display: none; /* Initially hide popup */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-container {
-  background-color: white;
-  padding: 30px;
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.popup-header h2 {
-  color: red;
-  margin-bottom: 10px;
-}
-
-.popup-content h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.popup-content p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.popup-content label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.popup-content input,
-.popup-content select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.popup-content button {
-  background-color: #007bff;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.popup-content button:hover {
-  background-color: #0056b3;
-}
-
-#thankYouMessage {
-  color: green;
-  font-weight: bold;
-}
-
-        
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -290,36 +218,6 @@
 
 <body>
 
-<!-- Popup Modal Structure -->
-<div id="popupForm" class="popup-overlay">
-  <div class="popup-container">
-    <div class="popup-header">
-      <h2>ALERT ALERT ALERT</h2>
-    </div>
-    <div class="popup-content">
-      <h3>Exciting Year End Sale!</h3>
-      <p>50% off Website Building!</p>
-      <p>It is not too late to start your online presence!</p>
-      <p>Get your website started today.</p>
-      <form id="popupFormSubmit" action="#">
-        <label for="contactMethod">Preferred Contact Method:</label>
-        <select id="contactMethod" name="contactMethod">
-          <option value="Email">Email</option>
-          <option value="Phone">Phone</option>
-        </select>
-
-        <div id="contactFieldContainer">
-          <label for="contactValue" id="contactLabel">Email Address:</label>
-          <input type="text" id="contactValue" name="contactValue" placeholder="Enter your email or phone" required>
-        </div>
-        
-        <button type="submit" id="submitForm">Submit</button>
-      </form>
-      <p id="thankYouMessage" style="display: none;">Thank you! Our team will contact you within 24 business hours.</p>
-    </div>
-  </div>
-</div>
-    
     <header>
         <h1>Johnnyverse</h1>
         <p>Your Trusted IT Partner in Florida, USA</p>
@@ -371,48 +269,6 @@
         <p>&copy; 2024 Johnnyverse. All Rights Reserved.</p>
     </footer>
 
-<script>
-  // Show the popup when the page loads
-  window.onload = function() {
-    document.getElementById('popupForm').style.display = 'flex';
-  };
-
-  // Hide the popup after form submission
-  document.getElementById('popupFormSubmit').onsubmit = function(event) {
-    event.preventDefault(); // Prevent form submission from refreshing the page
-
-    // Get form data
-    let contactMethod = document.getElementById('contactMethod').value;
-    let contactValue = document.getElementById('contactValue').value;
-
-    // Call Google Sheets API (or any backend script to save data)
-    saveFormData(contactMethod, contactValue);
-
-    // Show thank you message
-    document.getElementById('thankYouMessage').style.display = 'block';
-    setTimeout(function() {
-      document.getElementById('popupForm').style.display = 'none';
-    }, 2000); // Close the popup after 2 seconds
-  };
-
-  // Save form data to Google Sheets
-  function saveFormData(contactMethod, contactValue) {
-    const formData = new FormData();
-    formData.append('contactMethod', contactMethod);
-    formData.append('contactValue', contactValue);
-
-    // Send data to Google Sheets (replace the URL with your actual Google Apps Script URL)
-    fetch('YOUR_GOOGLE_SHEET_URL', {
-      method: 'POST',
-      body: formData,
-    })
-    .then(response => response.json())
-    .then(data => console.log('Form submitted successfully', data))
-    .catch(error => console.error('Error submitting form', error));
-  }
-</script>
-
-    
 </body>
 
 </html>
